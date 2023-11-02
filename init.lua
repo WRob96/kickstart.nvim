@@ -86,13 +86,12 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', event = "LspAttach", opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
   },
-
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -155,7 +154,9 @@ require('lazy').setup({
       end,
     },
   },
-
+  -- Theme and UI
+--[[
+  Default Theme:
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -164,21 +165,66 @@ require('lazy').setup({
       vim.cmd.colorscheme 'onedark'
     end,
   },
-
+]]--
+{ "EdenEast/nightfox.nvim",
+    priority=1000,
+    reloadable = true,
+    config = function()
+      require("nightfox").setup({
+        options = {
+          transparent = false,
+          dim_inactive = true,
+          styles = {
+            comments = "italic",
+            constants = "bold",
+          },
+        }
+  })
+  vim.cmd.colorscheme("carbonfox")
+  end,
+},
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', -- Icons enabled
+    },
     -- See `:help lualine.txt`
-    opts = {
+    config = function ()
+    require('lualine').setup({
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
+        icons_enabled = true,
+        theme = 'carbonfox',
         component_separators = '|',
         section_separators = '',
-      },
-    },
+      }
+    })
+    end,
   },
-
+  {
+    'nanozuki/tabby.nvim',
+    dependencies = {
+      'nvim-lualine/lualine.nvim',
+    },
+    config = function ()
+      vim.o.showtabline = 2
+    require('tabby.tabline').use_preset('active_wins_at_tail', {
+  theme = {
+    fill = 'TabLineFill', -- tabline background
+    head = 'TabLine', -- head element highlight
+    current_tab = 'TabLineSel', -- current tab label highlight
+    tab = 'TabLine', -- other tab label highlight
+    win = 'TabLine', -- window highlight
+    tail = 'TabLine', -- tail element highlight
+  },
+  nerdfont = true, -- whether use nerdfont
+  lualine_theme = 'carbonfox', -- lualine theme name
+  buf_name = {
+      mode = 'unique',
+  },
+  })
+  end,
+  },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
@@ -330,7 +376,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'java', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -460,6 +506,7 @@ require('which-key').register {
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -470,7 +517,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   clangd = {},
-  gopls = {},
+  --gopls = {},
   pyright = {},
   rust_analyzer = {},
   tsserver = {},

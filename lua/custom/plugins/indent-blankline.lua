@@ -4,10 +4,40 @@
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+  },
     main = 'ibl',
     opts = {},
     config = function ()
-      require('ibl').setup()
+      require('ibl').setup({
+      enabled = true,
+      debounce = 100,
+      viewport_buffer = {
+        min = 100,
+        max = 600,
+      },
+      indent = {
+        char = {'║','▎','▏','╎','┆'},
+        smart_indent_cap = true,
+        priority = 2,
+        tab_char = { "a", "b", "c" },
+      },
+      whitespace = {
+        highlight = { "Function", "Label"},
+        remove_blankline_trail = false,
+      },
+      scope = {
+      show_end = true,
+      show_start = true,
+        highlight = { "Function", "Label"},
+      }
+    })
+     local hooks = require "ibl.hooks"
+     hooks.register(
+     hooks.type.WHITESPACE,
+     hooks.builtin.hide_first_space_indent_level
+     )
     end,
   }
 
