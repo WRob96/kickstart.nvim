@@ -42,7 +42,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+vim.opt.wrap = false
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -175,7 +175,7 @@ require('lazy').setup({
           transparent = false,
           dim_inactive = true,
           styles = {
-            comments = "italic",
+            comments = "bold,italic",
             constants = "bold",
           },
         }
@@ -208,18 +208,18 @@ require('lazy').setup({
     },
     config = function ()
       vim.o.showtabline = 2
-    require('tabby.tabline').use_preset('active_wins_at_tail', {
-  theme = {
-    fill = 'TabLineFill', -- tabline background
-    head = 'TabLine', -- head element highlight
-    current_tab = 'TabLineSel', -- current tab label highlight
-    tab = 'TabLine', -- other tab label highlight
-    win = 'TabLine', -- window highlight
-    tail = 'TabLine', -- tail element highlight
-  },
-  nerdfont = true, -- whether use nerdfont
-  lualine_theme = 'carbonfox', -- lualine theme name
-  buf_name = {
+      require('tabby.tabline').use_preset('active_wins_at_tail', {
+      theme = {
+        fill = 'TabLineFill', -- tabline background
+        head = 'TabLine', -- head element highlight
+        current_tab = 'TabLineSel', -- current tab label highlight
+        tab = 'TabLine', -- other tab label highlight
+        win = 'TabLine', -- window highlight
+        tail = 'TabLine', -- tail element highlight
+      },
+      nerdfont = true, -- whether use nerdfont
+      lualine_theme = 'carbonfox', -- lualine theme name
+      buf_name = {
       mode = 'unique',
   },
   })
@@ -543,6 +543,13 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
 }
 
 mason_lspconfig.setup_handlers {

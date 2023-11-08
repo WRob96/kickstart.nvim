@@ -21,7 +21,6 @@
         char = {'║','▎','▏','╎','┆'},
         smart_indent_cap = true,
         priority = 2,
-        tab_char = { "a", "b", "c" },
       },
       whitespace = {
         highlight = { "Function", "Label"},
