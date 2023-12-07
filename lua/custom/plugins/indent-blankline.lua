@@ -14,11 +14,12 @@
       enabled = true,
       debounce = 100,
       viewport_buffer = {
-        min = 100,
-        max = 600,
+        min = 30,
+        max = 500,
       },
       indent = {
-        char = {'║','▎','▏','╎','┆'},
+        char = {'▏'},
+
         smart_indent_cap = true,
         priority = 2,
       },
@@ -27,6 +28,7 @@
         remove_blankline_trail = false,
       },
       scope = {
+      char = '▎',
       show_end = true,
       show_start = true,
         highlight = { "Function", "Label"},
