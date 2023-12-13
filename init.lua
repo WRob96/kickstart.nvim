@@ -114,12 +114,11 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-      -- Adds buffer?
-      'hrsh7th/cmp-buffer',
-      -- Autocomplete for filepaths
       'hrsh7th/cmp-path',
+      -- Adds buffer?
+      -- 'hrsh7th/cmp-buffer',
       -- Autocomplete for cmdline
-      'hrsh7th/cmp-cmdline',
+      -- 'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -725,6 +724,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
 
