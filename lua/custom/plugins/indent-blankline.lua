@@ -19,7 +19,6 @@
       },
       indent = {
         char = {'▏'},
-
         smart_indent_cap = true,
         priority = 2,
       },
@@ -31,7 +30,7 @@
       char = '▎',
       show_end = true,
       show_start = true,
-        highlight = { "Function", "Label"},
+      highlight = { "Function", "Label"},
       }
     })
      local hooks = require "ibl.hooks"

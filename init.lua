@@ -46,7 +46,7 @@ vim.g.maplocalleader = ' '
 vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2"
-vim.opt.listchars = "tab:<->,trail:·"
+vim.opt.listchars = "tab:<->"   -- trail:·"
 vim.opt.list = true
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
@@ -338,6 +338,18 @@ vim.o.mouse = 'a'
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'WslClipboard',
+     copy = {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+      },
+     paste = {
+        ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+     },
+     cache_enabled = 0,
+}
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -617,7 +629,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   clangd = {},
-  --gopls = {},
+  gopls = {},
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
