@@ -18,6 +18,10 @@ vim.opt.breakindentopt = "shift:2"
 vim.opt.listchars = "tab:<->,trail:·"
 vim.opt.list = true
 
+-- Status Column default settings:
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -98,6 +102,7 @@ require('lazy').setup({
       },
       signcolumn = true,
       numhl = true,
+      linehl = false,
       word_diff = true,
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
