@@ -9,9 +9,12 @@
 -- See `:help mapleader`
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2"
+
+-- List options for nonprinting characters
 vim.opt.listchars = "tab:<->,trail:·"
 vim.opt.list = true
 
@@ -597,8 +600,8 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
+      -- Disabling Missing fields diagnostic warning
+      diagnostics = { disable = { 'missing-fields' } },
     },
   },
 }
