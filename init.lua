@@ -12,7 +12,7 @@ vim.g.maplocalleader = ' '
 vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2"
-vim.opt.listchars = "tab:<->"   -- trail:·"
+vim.opt.listchars = "tab:<->,trail:·"
 vim.opt.list = true
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -293,9 +293,8 @@ vim.wo.number = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
+--  Copy and paste for WSL added
+--  `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 vim.g.clipboard = {
   name = 'WslClipboard',
