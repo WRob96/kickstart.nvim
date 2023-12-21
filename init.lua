@@ -184,7 +184,9 @@ require('lazy').setup({
           },
         }
   })
-  vim.cmd.colorscheme("carbonfox")
+    vim.cmd.colorscheme("carbonfox")
+    vim.o.pumblend = 15
+    vim.o.winblend = 10
   end,
 },
   {
