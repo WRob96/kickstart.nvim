@@ -34,10 +34,9 @@
       }
     })
      local hooks = require "ibl.hooks"
-     hooks.register(
+    --[[ hooks.register(
      hooks.type.WHITESPACE,
      hooks.builtin.hide_first_space_indent_level
-     )
-    end,
-  }
-
+     ) --]]
+    end,  }
+-- vim: ts=2 sts=2 sw=2 et
