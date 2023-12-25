@@ -3,7 +3,8 @@
 return {
   "luukvbaal/statuscol.nvim",
     dependencies = {
-      'gitsigns.nvim',
+      'lewis6991/gitsigns.nvim',
+      'mfussenegger/nvim-dap',
     },
     config = function()
       local builtin = require("statuscol.builtin")
