@@ -46,7 +46,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -88,10 +88,9 @@ require('lazy').setup({
   require 'kickstart.plugins.debug',
 
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  { import = 'custom.plugins' },
-  { import = 'ui.plugins'},
-  { import = 'colorschemes.plugins'},
-  { import = 'devx.plugins'}
+  { import = 'ui.plugins' },
+  { import = 'colorschemes.plugins' },
+  { import = 'devx.plugins' }
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
