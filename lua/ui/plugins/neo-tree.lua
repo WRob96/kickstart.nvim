@@ -9,10 +9,13 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
-  config = function ()
+  config = function()
     require('neo-tree').setup({
       view = { adaptive_size = true }
     })
+    vim.keymap.set('n', '<C-b>', function()
+      vim.cmd("Neotree toggle")
+    end, { desc = "Toggle [N]eo-tree" })
   end,
 }
 -- vim: ts=2 sts=2 sw=2 et
