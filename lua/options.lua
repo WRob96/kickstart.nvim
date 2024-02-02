@@ -21,7 +21,7 @@ vim.o.mouse = 'a'
 --  Copy and paste for WSL added
 --  `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
-if (vim.env.WSL_INTEROP == 0 or vim.env.WSL_DISTRO_NAME == 0) then
+if (vim.env.WSL_INTEROP == "1" or vim.env.WSL_DISTRO_NAME) then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
