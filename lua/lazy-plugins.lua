@@ -8,7 +8,8 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
+  -- New IO Library
+  'nvim-neotest/nvim-nio',
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
